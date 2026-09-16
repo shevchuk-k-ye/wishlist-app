@@ -1,15 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Список бажань</title>
-</head>
-<body>
-    <!-- Шапка з назвою -->
-    <!-- Форма додавання нового бажання -->
-    <!-- Список бажаних речей -->
-    <!-- Блок підсумкової суми -->
-    <!-- Підвал -->
-</body>
+  </head>
+  <body>
+    <header>
+      <h1>Список бажань</h1>
+      <nav>
+        <a href="#new">Додати бажання</a>
+        <a href="#list">Мої бажання</a>
+      </nav>
+    </header>
+    <main>
+      <section id="new">
+        <h2>Додати бажання</h2>
+        <div>
+          <label for="wishname">Введіть бажання</label>
+          <input type="text" id="wishname" name="wish" />
+        </div>
+
+        <div>
+          <label for="price">Введіть ціну бажаної речі</label>
+          <input type="text" id="price" name="wishPrice" />
+        </div>
+      </section>
+
+      <section id="list">
+        <h2>Мої бажання</h2>
+        <article>
+          <h3>Блиск для губ 400грн</h3>
+        </article>
+
+        <article>
+          <h3>Книга 500грн</h3>
+        </article>
+
+        <article>
+          <h3>Цукерки 100грн</h3>
+        </article>
+      </section>
+    </main>
+    <aside>
+      <p>Підсумкова сума: 1000 грн</p>
+    </aside>
+    <footer>
+      <p>Шевчук Крістіна</p>
+    </footer>
+  </body>
 </html>
