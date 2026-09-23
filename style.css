@@ -1,4 +1,4 @@
-*::before,
+*, *::before,
 *::after {
   box-sizing: border-box;
 }
@@ -51,7 +51,7 @@ article.purchased h3 {
 aside {
   font-size: 1.8rem;
   background-color: #f7d7e0;
-  border: 1px;
+  border: 1px solid #bf6487;
   color:#741047
 }
 
