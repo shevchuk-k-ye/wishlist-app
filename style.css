@@ -2,6 +2,10 @@
 *::after {
   box-sizing: border-box;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -14,10 +18,20 @@ header {
   padding: 20px;
   text-align: center;
   border-bottom: 2px solid #f6b9cb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 header h1 {
   margin-top: 0;
   color: #ad2e5f;
+}
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 header nav a {
   margin: 0 10px;
@@ -48,6 +62,12 @@ article.purchased h3 {
   text-decoration: line-through;
 }
 
+.cards {
+display: grid;
+grid-template-columns: 1fr;
+gap: 16px;
+}
+
 aside {
   font-size: 1.8rem;
   background-color: #f7d7e0;
@@ -59,4 +79,29 @@ footer {
     font-size: 0.9rem;
     padding: 10px;
     color: #863d59;
+}
+@media (min-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  main {
+    max-width: none;
+  }
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 30px;
+  }
 }
