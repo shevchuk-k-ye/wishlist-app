@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&display=swap" rel="stylesheet">
     <title>Список бажань</title>
   </head>
   <body>
@@ -27,26 +30,47 @@
           <label for="price">Введіть ціну бажаної речі</label>
           <input type="text" id="price" name="wishPrice" />
         </div>
+
+        <button type="button" class="buttonAdd">
+          +
+        </button>
       </section>
 
       <section id="list">
         <h2>Мої бажання</h2>
 
         <div class="cards">
-        <article class="card">
-          <h3>Блиск для губ 400грн</h3>
+        <article class="card priority">
+          <span class="cardName">
+          Блиск для губ
+          </span>
+
+          <span class="cardPrice">
+          400грн
+          </span>
         </article>
 
         <article class="card purchased">
-          <h3>Книга 500грн</h3>
+          <span class="cardName">
+          Книга
+          </span>
+          <span class="cardPrice">
+          500грн
+          </span>
         </article>
 
         <article class="card">
-          <h3>Цукерки 100грн</h3>
+          <span class="cardName">
+          Цукерки
+          </span>
+          <span class="cardPrice">
+          100грн
+          </span>
         </article>
       </div>
       </section>
     </main>
+
     <aside>
       <p>Підсумкова сума: 1000 грн</p>
     </aside>

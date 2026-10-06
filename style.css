@@ -1,23 +1,40 @@
-*, *::before,
+*,
+*::before,
 *::after {
   box-sizing: border-box;
 }
+
 img {
   max-width: 100%;
   height: auto;
 }
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: "Lora", serif;
   line-height: 1.5;
-  color: #741047;
-  background-color: #f7f1e6;
+  color: #a80049;
+  background-color: #fffcf5;
 }
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
 header {
-  background-color: #fcc4da;
+  background-color: #ffe0e0;
   padding: 20px;
   text-align: center;
-  border-bottom: 2px solid #f6b9cb;
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +42,6 @@ header {
 }
 header h1 {
   margin-top: 0;
-  color: #ad2e5f;
 }
 header nav {
   display: flex;
@@ -36,22 +52,37 @@ header nav {
 header nav a {
   margin: 0 10px;
   text-decoration: none;
-  color: #bf6487;
-  font-weight: 600;
+  color: #bb306c;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 header nav a:hover {
-  color: #863d59;
+  color: #a80049;
 }
 main {
   max-width: 600px;
   margin: 20px auto;
   padding: 0 20px;
 }
+section{
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 article.card {
   padding: 14px;
-  border: 1px double #ad2e5f;
+  border: 2px #ffe0e0;
   border-radius: 10px;
   margin-bottom: 12px;
+  background-color: #ffe0e0;
+}
+
+.card.priority {
+  border-left: 5px solid #bb306c;
 }
 
 article.purchased {
@@ -63,22 +94,57 @@ article.purchased h3 {
 }
 
 .cards {
-display: grid;
-grid-template-columns: 1fr;
-gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  text-align: center;
+}
+
+.cardName {
+  font-size: 1.2rem;
+}
+
+.cardPrice {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.buttonAdd {
+color:#fffffe;
+font-size: 2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+/* акцентний колір привертає увагу:*/ 
+background-color: #bb306c; 
+/*акуратна кругла форма приємна для очей:*/
+border-radius: 40px; 
+margin: 10px;
+border: none;
+padding: 1em 1em; 
+cursor: pointer;
+width: 20px;
+height: 20px;
+}
+/*на hover-кнопку підсвідомо хочеться навести курсор,
+щоб побачити зміну кольору*/
+.buttonAdd:hover { 
+background-color: #a80049; 
+color:#e1e1dd;
 }
 
 aside {
   font-size: 1.8rem;
-  background-color: #f7d7e0;
-  border: 1px solid #bf6487;
-  color:#741047
+  background-color: #ffe0e0;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  color: #a80049;
+  align-self: start;
 }
 
 footer {
-    font-size: 0.9rem;
-    padding: 10px;
-    color: #863d59;
+  font-size: 0.9rem;
+  padding: 10px;
 }
 @media (min-width: 600px) {
   .cards {
