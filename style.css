@@ -12,8 +12,8 @@ body {
   margin: 0;
   font-family: "Lora", serif;
   line-height: 1.5;
-  color: #a80049;
-  background-color: #fffcf5;
+  color: #2b1309;
+  background-color: #FFF8F3;
 }
 
 h1 {
@@ -31,10 +31,10 @@ h3 {
 }
 
 header {
-  background-color: #ffe0e0;
+  background-color: #D55B5E;
+  color: #5C2C16;
   padding: 20px;
   text-align: center;
-  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,13 +51,13 @@ header nav {
 }
 header nav a {
   margin: 0 10px;
+  color: #5C2C16;
   text-decoration: none;
-  color: #bb306c;
   font-size: 1.3rem;
   font-weight: 700;
 }
 header nav a:hover {
-  color: #a80049;
+  color: #2b1309;
 }
 main {
   max-width: 600px;
@@ -75,14 +75,14 @@ label {
 
 article.card {
   padding: 14px;
-  border: 2px #ffe0e0;
+  border: 2px #D55B5E;
   border-radius: 10px;
   margin-bottom: 12px;
-  background-color: #ffe0e0;
+  background-color: #D55B5E;
 }
 
 .card.priority {
-  border-left: 5px solid #bb306c;
+  border-left: 5px solid #5C2C16;
 }
 
 article.purchased {
@@ -109,14 +109,19 @@ article.purchased h3 {
   font-weight: 600;
 }
 .buttonAdd {
-color:#fffffe;
+color:#FFF8F3;
 font-size: 2rem;
 display: flex;
 align-items: center;
 justify-content: center;
-/* акцентний колір привертає увагу:*/ 
-background-color: #bb306c; 
-/*акуратна кругла форма приємна для очей:*/
+
+/* Щоб додавати нові бажання було приємно, обрали насичений 
+червоний колір, який гармонійно контрастує із загальною палітрою та 
+одразу привертає увагу користувача.
+Він інтуїтивно сигналізує про головну дію, знижує когнітивне навантаження 
+при пошуку елемента керування та робить процес взаємодії з формою 
+комфортнішим і живішим. */ 
+background-color: #d9022a; 
 border-radius: 40px; 
 margin: 10px;
 border: none;
@@ -125,20 +130,24 @@ cursor: pointer;
 width: 20px;
 height: 20px;
 }
-/*на hover-кнопку підсвідомо хочеться навести курсор,
-щоб побачити зміну кольору*/
+
+/*Плавний перехід у глибокий темний відтінок червоного під час наведення
+курсора забезпечує миттєвий зворотний зв’язок інтерфейсу. Це створює відчуття
+фізичного відгуку, підвищує інтуїтивну зрозумілість елемента як клікабельного,
+зменшує ймовірність помилкових кліків та перетворює рутинне додавання записів
+на задоволення, повністю забезпечуючи зручність та приємність користування.*/
 .buttonAdd:hover { 
-background-color: #a80049; 
-color:#e1e1dd;
+background-color: #bc0023; 
+color:#FFF8F3;
 }
 
 aside {
   font-size: 1.8rem;
-  background-color: #ffe0e0;
+  font-weight: 500;
+  background-color: #D55B5E;
   border: none;
   border-radius: 10px;
   padding: 20px;
-  color: #a80049;
   align-self: start;
 }
 
