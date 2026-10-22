@@ -74,14 +74,14 @@ label {
 }
 
 article.card {
-  padding: 14px;
+  padding: 25px;
   border: 2px #D55B5E;
   border-radius: 10px;
   margin-bottom: 12px;
   background-color: #D55B5E;
 }
 
-.card.priority {
+.card.priority-high {
   border-left: 5px solid #5C2C16;
 }
 
@@ -102,11 +102,14 @@ article.purchased h3 {
 
 .cardName {
   font-size: 1.2rem;
+  font-weight: normal;
+  margin: 4px 0;
 }
 
 .cardPrice {
   font-size: 1.4rem;
   font-weight: 600;
+  margin: 4px 0;
 }
 .buttonAdd {
 color:#FFF8F3;
