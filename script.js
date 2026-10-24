@@ -13,7 +13,9 @@ function renderWishlist(array) {
 //видаляє статичні картки-заглушки
 const staticCards = document.querySelectorAll(".card");
 staticCards.forEach((card) => card.remove());
-  for (wish of array) {
+  for (const wish of array) {
+  //вивід назви бажання у консоль для перевірки роботи циклу
+    console.log(wish.title);
 //для кожного бажання створюємо елемент article, додаємо до класу card
     const card = document.createElement("article");
     card.classList.add("card");
@@ -32,7 +34,7 @@ staticCards.forEach((card) => card.remove());
      //створюємо атрибут картки "приорітетність"
     card.dataset.priority = wish.priority;
     if (wish.priority === "високий") {
-      card.classList.add("priority-high");
+    card.classList.add("priority-high");
     }
     //додаємо картку в контейнер
     listContainer.append(card);
