@@ -20,22 +20,37 @@
     </header>
   <div class="content">
     <main>
+
+
       <section id="new">
         <h2>Додати бажання</h2>
+        <form id="wish-form">
         <div>
-          <label for="wishname">Введіть бажання</label>
-          <input type="text" id="wishname" name="wish" />
+          <label for="title">Введіть бажання</label>
+          <input type="text" id="title" name="title" required />
         </div>
 
         <div>
           <label for="price">Введіть ціну бажаної речі</label>
-          <input type="text" id="price" name="wishPrice" />
+          <input type="number" id="price" name="price" min="0" required/>
         </div>
 
-        <button type="button" class="buttonAdd">
+         <div>
+          <label for="price">Пріоритетність бажання</label>
+          <select id="priority" name="priority">
+            <option value="низький">Низький</option>
+            <option value="середній">Середній</option>
+            <option value="високий">Високий</option>
+          </select>
+        </div>
+
+        <button type="submit" class="buttonAdd">
           +
         </button>
+        
+        </form> 
       </section>
+
 
       <section id="list">
         <h2>Мої бажання</h2>

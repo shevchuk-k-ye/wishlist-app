@@ -29,8 +29,24 @@ staticCards.forEach((card) => card.remove());
     const priceElement = document.createElement("p");
     priceElement.textContent = `${wish.price} грн`;
     priceElement.classList.add("cardPrice");
-    //вкладаємо теги ціни і назви у картку
-    card.append(titleElement, priceElement);
+
+    // Створюємо select для пріоритету
+    const prioritySelect = document.createElement("select");
+    prioritySelect.classList.add("priority-select");
+
+    const priorities = ["низький", "середній", "високий"];
+    for (const p of priorities) {
+      const option = document.createElement("option");
+      option.value = p;
+      option.textContent = p;
+      if (p === wish.priority) {
+        option.selected = true;
+      }
+      prioritySelect.append(option);
+    }
+
+    //вкладаємо теги ціни, назви і пріоритетності у картку
+    card.append(titleElement, priceElement, prioritySelect);
      //створюємо атрибут картки "приорітетність"
     card.dataset.priority = wish.priority;
     if (wish.priority === "високий") {
@@ -44,6 +60,57 @@ staticCards.forEach((card) => card.remove());
   totalPrice.textContent = `Підсумкова сума: ${totalSum} грн`;
 }
 renderWishlist(wishArray);
+
+// Обробник події change через делегування для 
+// зміни пріоритету вже доданого елемента
+listContainer.addEventListener('change', (event) => {
+  if (event.target.classList.contains('priority-select')) {
+    const select = event.target;
+    const card = select.closest('.card');
+    const newPriority = select.value;
+    card.dataset.priority = newPriority;
+
+    if (newPriority === "високий") {
+      card.classList.add("priority-high");
+    } else {
+      card.classList.remove("priority-high");
+    }
+  }
+});
+
+//Валідація ціни на від'ємне значення
+const priceInput = document.querySelector('#price');
+priceInput.addEventListener('input', () => {
+  if (priceInput.value !== '' && Number(priceInput.value) < 0) {
+    priceInput.setCustomValidity("Ціна має бути невід’ємною!");
+  } else {
+    priceInput.setCustomValidity('');
+  }
+});
+
+// Обробник сабміту форми, додавання нового бажання в 
+// масив та перерендер без перезавантаження
+const form = document.querySelector('#wish-form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const titleInput = document.querySelector('#title');
+  const prioritySelect = document.querySelector('#priority');
+
+  const title = titleInput.value.trim();
+  const price = Number(priceInput.value);
+  const priority = prioritySelect.value;
+
+  const newWish = {
+    title: title,
+    price: price,
+    priority: priority
+  };
+  
+  wishArray.push(newWish);
+
+  renderWishlist(wishArray);
+  form.reset();
+});
 
 
 function calculateTotal(array) {
@@ -73,6 +140,7 @@ console.log(`Загальна вартість бажань: ${summary(wishArray
 
 //перевіряє чи вписується бажання у заданий бюджет
 const withinBudget = (price, budget) => price <= budget;
+
 let budget = 400;
 for (const wish of wishArray) {
   if (withinBudget(wish.price, budget)) {
