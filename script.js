@@ -7,25 +7,37 @@ const wishArray = [
 
 const listContainer = document.querySelector("#wishlist");
 const totalPrice = document.querySelector('#total-price');
+const reloadBtn = document.querySelector('#reload-btn');
+
+// Посилання на публічний API
+const API_URL = 'https://jsonplaceholder.typicode.com/todos?userId=2';
 
 //функція рендеру сторінки
 function renderWishlist(array) {
+
 //видаляє статичні картки-заглушки
 const staticCards = document.querySelectorAll(".card");
 staticCards.forEach((card) => card.remove());
   for (const wish of array) {
+
   //вивід назви бажання у консоль для перевірки роботи циклу
     console.log(wish.title);
+
 //для кожного бажання створюємо елемент article, додаємо до класу card
     const card = document.createElement("article");
     card.classList.add("card");
+    if (wish.completed) {
+      card.classList.add("purchased");
+    }
     // створюємо тег заголовка h3 для назви бажання,
     //записуємо назву бажання з масиву, додаємо до класу cardName(для css)
     const titleElement = document.createElement("h3");
     titleElement.textContent = wish.title;
     titleElement.classList.add("cardName");
+
     // створюємо тег тексту для ціни бажання,
     //записуємо ціну бажання з масиву, додаємо до класу cardPrice(для css)
+
     const priceElement = document.createElement("p");
     priceElement.textContent = `${wish.price} грн`;
     priceElement.classList.add("cardPrice");
@@ -47,6 +59,7 @@ staticCards.forEach((card) => card.remove());
 
     //вкладаємо теги ціни, назви і пріоритетності у картку
     card.append(titleElement, priceElement, prioritySelect);
+
      //створюємо атрибут картки "приорітетність"
     card.dataset.priority = wish.priority;
     if (wish.priority === "високий") {
@@ -61,6 +74,42 @@ staticCards.forEach((card) => card.remove());
 }
 renderWishlist(wishArray);
 
+//Асинхронна функція для завантаження списку завдань із публічного API,
+//що використовує ендпоінт: https://jsonplaceholder.typicode.com/todos?userId=2
+async function loadData() {
+  listContainer.innerHTML = '<div class="spinner"></div>';
+  try {
+    const response = await fetch(API_URL);
+    if(!response.ok) {
+    throw new Error(`Сервер відповів кодом ${response.status}`);
+    }
+    const data = await response.json();
+    console.log(data);
+    const adaptedWishes = data.map(item => ({
+    title: item.title,  
+    completed: item.completed,
+    price: 100,
+    priority: "низький"
+    }));
+    // Передаємо дані у функцію рендеру списку
+    renderWishlist(adaptedWishes);
+  }
+  catch (error) {
+    console.error("Деталі помилки:", error);
+    listContainer.innerHTML = '<p class="error-message">Список бажань недоступний офлайн</p>';
+  }
+  finally {
+  listContainer.querySelector('.spinner')?.remove();
+  }
+}
+loadData();
+
+if (reloadBtn) {
+  reloadBtn.addEventListener('click', () => {
+    loadData();
+  });
+}
+
 // Обробник події change через делегування для 
 // зміни пріоритету вже доданого елемента
 listContainer.addEventListener('change', (event) => {
@@ -74,7 +123,7 @@ listContainer.addEventListener('change', (event) => {
       card.classList.add("priority-high");
     } else {
       card.classList.remove("priority-high");
-    }
+    } 
   }
 });
 
