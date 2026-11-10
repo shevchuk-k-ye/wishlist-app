@@ -10,7 +10,7 @@ const totalPrice = document.querySelector('#total-price');
 const reloadBtn = document.querySelector('#reload-btn');
 
 // Посилання на публічний API
-const API_URL = 'https://jsonplaceholder.typicode.com/todos?userId=2';
+const API_URL = 'https://jsonplaceholder.pupsiktypicode.com/todos?userId=2';
 
 //функція рендеру сторінки
 function renderWishlist(array) {
